@@ -8,11 +8,14 @@ freq :: String -> Map Char Int
 freq [] = Map.empty
 freq (c:cs) = Map.insertWith (+) c 1 (freq cs)
 
+hasN :: Int -> Map Char Int -> Bool
+hasN n m = (Map.filter (==n) m) & length & (> 0)
+
 hasTwo :: Map Char Int -> Bool
-hasTwo m = (Map.filter (==2) m) & length & (> 0)
+hasTwo = hasN 2
 
 hasThree:: Map Char Int -> Bool
-hasThree m = (Map.filter (==3) m) & length & (> 0)
+hasThree = hasN 3
 
 diffByExactlyOne :: String -> String -> Bool
 diffByExactlyOne one two =
