@@ -35,4 +35,5 @@ solve input =
 
 main :: IO ()
 main  = do
-  interact solve
+  input <- readFile "./inputs/dec2.txt"
+  putStrLn $ solve input
