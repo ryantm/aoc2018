@@ -5,8 +5,7 @@ import qualified Data.Map.Strict as Map
 import Data.Map.Strict (Map)
 
 freq :: String -> Map Char Int
-freq [] = Map.empty
-freq (c:cs) = Map.insertWith (+) c 1 (freq cs)
+freq = foldl (\ m c -> Map.insertWith (+) c 1 m) Map.empty
 
 hasN :: Int -> Map Char Int -> Bool
 hasN n m = (Map.filter (==n) m) & length & (> 0)
